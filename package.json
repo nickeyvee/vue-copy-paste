@@ -1,6 +1,6 @@
 {
   "name": "@nickeyvee/vue-copy-paste",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "private": false,
   "scripts": {
     "serve": "vue-cli-service serve",
@@ -8,7 +8,7 @@
     "build:lib": "vue-cli-service build --report --target lib --mode production ./src/install.js",
     "lint": "vue-cli-service lint"
   },
-  "main": "dist/cash-app.umd.min.js",
+  "main": "dist/vue-copy-paste.umd.min.js",
   "dependencies": {
     "core-js": "^3.6.5",
     "vue": "^2.6.11",
