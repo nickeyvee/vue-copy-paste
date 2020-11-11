@@ -11,6 +11,6 @@ import CopyPaste from './components/CopyPaste'
 
 export default {
   install(Vue) {
-    Vue.component('CopyPaste', CopyPaste);
+    Vue.component('vue-copy-paste', CopyPaste);
   },
 };

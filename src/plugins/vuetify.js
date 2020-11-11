@@ -9,4 +9,10 @@ Vue.use(Vuetify, {
   }
 })
 
-export default new Vuetify({})
+export default new Vuetify({
+  icons: {
+    values: {
+      copyIcon: 'file_copy'
+    }
+  }
+})

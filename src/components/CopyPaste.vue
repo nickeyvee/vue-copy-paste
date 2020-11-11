@@ -21,7 +21,7 @@
             :small="small"
             class="copy-paste material-icons"
           >
-            file_copy
+            {{ $vuetify.icons.values.copyIcon }}
           </v-icon>
         </v-btn>
         <div
@@ -62,6 +62,11 @@ export default {
     small: {
       type: Boolean,
       default: false
+    }
+  },
+  created () {
+    if (!this.$vuetify.icons.values.copyIcon) {
+      console.warn('No icon specified - falling back on default')
     }
   },
   methods: {
