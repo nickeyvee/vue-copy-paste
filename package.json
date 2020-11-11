@@ -1,15 +1,18 @@
 {
-  "name": "copy-paste",
-  "version": "0.1.0",
-  "private": true,
+  "name": "@nickeyvee/vue-copy-paste",
+  "version": "0.1.1",
+  "private": false,
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
+    "build:lib": "vue-cli-service build --report --target lib --mode production ./src/install.js",
     "lint": "vue-cli-service lint"
   },
+  "main": "dist/cash-app.umd.min.js",
   "dependencies": {
     "core-js": "^3.6.5",
-    "vue": "^2.6.11"
+    "vue": "^2.6.11",
+    "vuetify": "^2.2.11"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^4.5.0",
@@ -18,7 +21,15 @@
     "babel-eslint": "^10.1.0",
     "eslint": "^6.7.2",
     "eslint-plugin-vue": "^6.2.2",
-    "vue-template-compiler": "^2.6.11"
+    "sass": "^1.19.0",
+    "sass-loader": "^8.0.0",
+    "vue-cli-plugin-vuetify": "^2.0.7",
+    "vue-template-compiler": "^2.6.11",
+    "vuetify-loader": "^1.3.0"
+  },
+  "peerDependencies": {
+    "vue": "2.x",
+    "vuetify": "2.x"
   },
   "eslintConfig": {
     "root": true,

@@ -1,17 +1,21 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <v-app>
+      <copy-paste
+        tooltip
+        value="Vue copy paste"
+      />
+    </v-app>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import CopyPaste from './components/CopyPaste.vue'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    CopyPaste
   }
 }
 </script>
