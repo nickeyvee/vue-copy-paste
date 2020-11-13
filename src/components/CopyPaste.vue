@@ -2,7 +2,7 @@
   <div style="width: 50px;">
     <v-tooltip
       :disabled="!tooltip"
-      class="wrapper"
+      :styles="tooltipStyles"
       right
     >
       <template v-slot:activator="{ on }">
@@ -26,7 +26,8 @@
         </v-btn>
         <div
           :ref="`acctId-${index || 0}`"
-          :class="`msg opacity ${color ? `${color}--text` : 'blue--text'} lighten-1 body-2`"
+          :style="msgStyles"
+          :class="`${color ? `${color}--text` : 'blue--text'} lighten-1 body-2`"
         >
           Copied!
         </div>
@@ -69,6 +70,36 @@ export default {
       console.warn('No icon specified - falling back on default')
     }
   },
+  data () {
+    return {
+      tooltipStyles: {
+        width: '50px',
+        margin: 'auto',
+        position: 'relative'
+      },
+      msg: {
+        display: 'block',
+        opacity: 0.7,
+        position: 'absolute',
+        fontWeight: 700,
+        pointerEvents: 'none',
+        userSelect: 'none',
+        transform: 'translateY(-120%) scale(1.2)'
+      },
+      hidden: {
+        opacity: 0,
+        pointerEvents: 'none',
+        transition: '0.3s ease-in-out',
+        transform: 'scale(0.9)'
+      },
+      msgActive: false
+    }
+  },
+  computed: {
+    msgStyles () {
+      return this.msgActive ? this.msg : { ...this.msg, ...this.hidden }
+    }
+  },
   methods: {
     copyText () {
       const tempInput = document.createElement('input')
@@ -78,34 +109,9 @@ export default {
       tempInput.select()
       document.execCommand('copy')
       document.body.removeChild(tempInput)
-      this.$refs[`acctId-${this.index || 0}`].classList.remove('opacity')
-      setTimeout(() => {
-        this.$refs[`acctId-${this.index || 0}`].classList.add('opacity')
-      }, 50)
+      this.msgActive = true
+      setTimeout(() => { this.msgActive = false }, 50)
     }
   }
 }
 </script>
-
-<style scoped>
-.wrapper {
-  width: 50px;
-  margin: auto;
-  position: relative;
-}
-.msg {
-  display: block;
-  opacity: 0.7;
-  position: absolute;
-  font-weight: 700;
-  pointer-events: none;
-  user-select: none;
-  transform: translateY(-120%) scale(1.2);
-}
-.opacity {
-  opacity: 0;
-  pointer-events: none;
-  transition: 0.3s ease-in-out;
-  transform: scale(0.9);
-}
-</style>
